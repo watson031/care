@@ -1,0 +1,41 @@
+//ADD a establishement
+###
+POST http://localhost:5000/establishment HTTP/1.1
+content-type: application/json
+
+{
+    "establishment":  { 
+        "name": "hopital12 Juif",
+        "logo_url": "hopital12_juif_logo",
+        "phone": "514-786-755521",
+        "email": "hopital12-juif@hotmail.com",
+        "adress": "143412, boulevard Maisonneuve",
+        "description": "Hospital12"
+    }
+}
+
+###
+//GET ALL ESTABLISHMENTS
+GET http://localhost:5000/establishment HTTP/1.1
+
+###
+//GET ALL ESTABLISHMENTS WHERE PATIENT HAVE A ACTIVE FOLLLOW_UP
+GET http://localhost:5000/establishment/141 HTTP/1.1
+
+###
+//GET id_establishment by id_user
+GET http://localhost:5000/establishment/user/141 HTTP/1.1
+
+###
+// ADD A ADMIN
+POST http://localhost:5000/establishment/admin HTTP/1.1
+content-type: application/json
+
+{
+    "admin": { "firstName": "Ethel", "lastName": "Barnett","email":"Ethel-Barnett@gmail.com","password":"Ethel-admin-Barnett"},
+    "idEstablishment": 24
+}
+
+# ### 
+# // DELETE A FOLLOW_UP
+# DELETE http://localhost:5000/establishment/user_establishment/42 HTTP/1.1

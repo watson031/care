@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Api Documentation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div style="border:1px solid black;">
+        <h3>Listes des differents status code</h3>
+        <h4 style="color:green;">Pour les requetes de type GET</h4>
+        <ul>
+            <li><strong>200</strong> : Tout va bien</li>
+            <li> <strong>404</strong> : si aucun objet n'est retourné (ex: id non valide)</li>
+        </ul>
+        <h4 style="color:blue;">Pour les requetes de type POST et PUT</h4>
+        <ul>
+            <li><strong>201</strong> : si ajouté ou modifié</li>
+            <li><strong>505</strong> : si pas possible de modifié</li>
+            <li><strong>444</strong> : si email existant</li>
+            <li> <strong>455</strong> : si code acces invalide</li>
+        </ul>
+        <h4 style="color:red;">Pour les requetes de type DELETE / DESACTIVATE</h4>
+        <ul>
+            <li><strong>222</strong> : si supprimé ou desactivé</li>
+            <li> <strong>409</strong> : s'il y'a eu un probleme pour supprimer (ex: id non trouvé)</li>
+        </ul>
+        <h4 style="color:red;">Pour les envois des objets avec images</h4>
+        <ul>
+            <li><strong>223</strong> : si tout s'est bien passé</li>
+            <li> <strong>432</strong> : si mauvais extension</li>
+            <li> <strong>433</strong> : si depasse la taille maximum (&lt;1 mo) </li>
+        </ul>
+    </div>
+    <h3>Listes des Requetes possible</h3>
+    <script src="doc-api.js"></script>
+    <script>
+        for (const key in API) {
+            document.querySelector('body').innerHTML += '' +
+                '<h4>' + key + '</h4>' +
+                '<div id = ' + key + '>'
+            for (const value of API[key]) {
+                document.querySelector('#' + key).innerHTML += '' +
+                    '<div>' +
+                    '<h5>' + value.title + '</h5>' +
+                    '<details>' +
+                    '<summary>#' + value.Method + ' ' + value.url + '</summary>' +
+                    (value['request_body'] !== undefined ?
+                        'Request Body' +
+                        '<pre>' +
+                        JSON.stringify(value.request_body, null, 4) +
+                        '</pre>'
+                        :
+                        ''
+                    ) +
+                    "Response" +
+                    '<pre>' +
+                    JSON.stringify(value.response, null, 4) +
+
+                    '</pre>'
+                document.querySelector('#' + key).innerHTML += '' +
+                    '</details>'
+                '</div>'
+            }
+            document.querySelector('#' + key).innerHTML += '</div>'
+        }
+    </script>
+</body>
+
+</html>

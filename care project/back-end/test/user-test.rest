@@ -1,0 +1,129 @@
+//GET ALL USERS
+GET http://localhost:5000/user HTTP/1.1
+
+###
+//GET USER BY ID
+GET http://localhost:5000/user/8 HTTP/1.1
+
+###
+//GET REPRESENTANTS BY ID_ESTABLISHMENT
+GET http://localhost:5000/user/representant/24 HTTP/1.1
+
+###
+//GET ALL PATIENTS OF AN ESTABLISHMENT BY ID_ESTABLISHMENT
+GET http://localhost:5000/user/patient/24 HTTP/1.1
+
+###
+//GET ALL PATIENTS THAT HAS ACTIVE FOLLOW-UPS IN A ESTABLISHMENT
+GET http://localhost:5000/user/active-follow-up/24 HTTP/1.1
+
+###
+//VERIFY USER (LOGIN)
+POST http://localhost:5000/user/login HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+email=biran@gmail.com&password=bi123
+
+###
+//VERIFY FIRST-TIME USER (***EMAIL AND ACCES-CODE***)
+POST http://localhost:5000/user/verify HTTP/1.1
+content-type: application/json
+
+{ "email": "aaa@gmailcom", "access_code": 195875}
+
+###
+// GET ROLE BY ID
+GET http://localhost:5000/role/4 HTTP/1.1
+
+###
+// GET ROLES
+GET http://localhost:5000/role HTTP/1.1
+
+###
+// ADD A PATIENT
+POST http://localhost:5000/user/patient HTTP/1.1
+content-type: application/json
+
+{ "firstName": "Deanna", "lastName": "Rich", "date_of_birth": "1991-06-06","phone":"(450)812-9228","email":"teverett@gmail.com","password":"DHquFLAh",
+"id_sexe":3,"acces_code":null}
+
+###
+// ADD A REPRESENTANT
+POST http://localhost:5000/user/representant HTTP/1.1
+content-type: application/json
+
+{
+     "representant": { "firstName": "Mimi ", "lastName": "Zavala", "date_of_birth": "1987-07-15","phone":"(514)584-8482","email":"jaxweb@icloud.com","password":"123456",
+        "id_sexe":1 ,"poste":"infirmier" },
+     "idEstablishment": 24
+}
+
+
+### 
+// DELETE A USER
+DELETE http://localhost:5000/user/106 HTTP/1.1
+
+// Desactivate a user
+###
+PUT http://localhost:5000/user/desactivate/8 HTTP/1.1
+
+// Activate a user
+###
+PUT http://localhost:5000/user/activate/8 HTTP/1.1
+
+//Update a user (PATIENT)
+###
+PUT http://localhost:5000/user/patient HTTP/1.1
+content-type: application/json
+
+{ "id": 141,"firstName": "Giselle", "lastName": "Sierra", "date_of_birth": "2021-04-13","phone":"514-956-4569","email":"aaa@gmail.com",
+"id_sexe":2}
+
+//Update a user ***(SUBSCRIBE PATIENT)***
+###
+PUT http://localhost:5000/user/subscribe HTTP/1.1
+content-type: application/json
+
+{ "id": 119,"firstName": "Gigi", "lastName": "Harvard", "date_of_birth": "2021-04-13","phone":"514-956-4569","password":"biran",
+"id_sexe":2,"access_code": 189}
+
+//Update a user (REPRESENTANT)
+###
+PUT http://localhost:5000/user/representant HTTP/1.1
+content-type: application/json
+
+{ "id": 4,"firstName": "Ricardo", "lastName": "Dos Santos ","phone":"514-460-7258","email":"ricardo@gmail.com",
+"id_sexe":1,"poste":"infirmier" }
+
+//  RETURN ACTIVE USERS BY ESTABLISHMENT
+###
+GET http://localhost:5000/user/active/1 HTTP/1.1
+
+//  RETURN INACTIVE USERS BY ESTABLISHMENT 
+###
+GET http://localhost:5000/user/inactive/1 HTTP/1.1
+
+
+
+### 
+// DELETE A user
+DELETE http://localhost:5000/user/table_user_establishmnt/17 HTTP/1.1
+
+### 
+// DELETE A representant
+DELETE http://localhost:5000/user/table_user/49 HTTP/1.1
+
+### 
+// DELETE A representant
+DELETE http://localhost:5000/user/table_follow_up/9 HTTP/1.1
+
+### 
+// DELETE A representant
+DELETE http://localhost:5000/user/table_question_follow_up/3 HTTP/1.1
+
+###
+// GET USER BY EMAIL
+POST http://localhost:5000/user/email HTTP/1.1
+content-type: application/json
+
+{ "email": "giselle.sierra@gmail.com"}

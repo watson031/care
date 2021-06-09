@@ -1,0 +1,23 @@
+###
+//GET MESSAGES
+GET http://localhost:5000/message/8 HTTP/1.1
+
+###
+//GET last message
+GET http://localhost:5000/message/last-follow-up-message/4/10 HTTP/1.1
+
+###
+// SEND A MESSAGE
+POST http://localhost:5000/message/send HTTP/1.1
+content-type: application/json
+
+{ "contenu":"Bonjour !!!","id_follow_up":8,"id_user":22}
+
+
+###
+// DELETE ALL MESSAGES
+DELETE http://localhost:5000/message HTTP/1.1
+
+###
+// SEND A  MESSAGE
+GET http://care-project.herokuapp.com/message/test/sendmail/watson031@hotmail.com HTTP/1.1

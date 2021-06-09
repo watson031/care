@@ -1,0 +1,10 @@
+# // DELETE ALL ESTABLISHEMENT **** NOT ACCESSIBLE TO ANYONE
+# DELETE https://care-project.herokuapp.com/establishment/16374735th HTTP/1.1
+
+###
+// DELETE ALL USER_ESTABLISHEMENT **** NOT ACCESSIBLE TO ANYONE
+DELETE https://care-project.herokuapp.com/establishment/user_establishment HTTP/1.1
+
+###
+// GET USER BY ROLE
+GET https://care-project.herokuapp.com/user/role/16374735th/3 HTTP/1.1

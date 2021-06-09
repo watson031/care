@@ -1,0 +1,31 @@
+###
+//GET ALL SERVICES BY ESTABLISHMENT
+GET http://localhost:5000/service/establishment/24 HTTP/1.1
+
+###
+//GET SERVICE BY ID
+GET http://localhost:5000/service/1 HTTP/1.1
+
+###
+// ADD A SERVICE
+POST http://localhost:5000/service HTTP/1.1
+content-type: application/json
+
+{
+   "description": "legs surgery",
+    "id_etablishment": 24
+}
+
+//Update a SERVICE
+###
+PUT http://localhost:5000/service/1 HTTP/1.1
+content-type: application/json
+
+{
+   "description": "cardiogramme",
+    "id_etablishment": 24
+}
+
+### 
+// DELETE A SERVICE
+DELETE http://localhost:5000/service/27 HTTP/1.1

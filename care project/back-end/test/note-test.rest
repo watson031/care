@@ -1,0 +1,13 @@
+// ADD A NOTE
+POST http://localhost:5000/note HTTP/1.1
+content-type: application/json
+
+{ "description": "fumeur", "id_user": 107 }
+
+###
+//GET NOTE BY ID
+GET http://localhost:5000/note/107 HTTP/1.1
+
+### 
+// DELETE A NOTE BY ID
+DELETE http://localhost:5000/note/11 HTTP/1.1

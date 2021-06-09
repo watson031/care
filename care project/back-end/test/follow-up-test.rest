@@ -1,0 +1,36 @@
+###
+//GET FOLLOW-UP BY ID
+GET http://localhost:5000/medical-follow-up HTTP/1.1
+
+###
+//GET FOLLOW-UP BY ID
+GET http://localhost:5000/medical-follow-up/45 HTTP/1.1
+
+###
+// ADD A MEDICAL FOLLOW-UP
+POST http://localhost:5000/medical-follow-up/access-code HTTP/1.1
+content-type: application/json
+
+{"email":"jack@gmailcom","access_code":456123,"id_service":1,"id_establishment":1,"treatment_description":"Drink 2000 ml of water daily"}
+
+### 
+// DELETE A FOLLOW_UP
+DELETE http://localhost:5000/medical-follow-up/4 HTTP/1.1
+
+###
+//GET FOLLOW-UP BY ID_USER AND ID_ESTABLISHMENT
+GET http://localhost:5000/medical-follow-up/45/1 HTTP/1.1
+
+//Update a follow-up
+###
+PUT http://localhost:5000/medical-follow-up/treatment-description HTTP/1.1
+content-type: application/json
+
+{ "id": 5,"treatment_description": "Prenez un comprime XXYXYY 1X le jour . Changer de pansement 2X chaque jour"}
+
+//Update status of a follow-up
+###
+PUT http://localhost:5000/medical-follow-up/status HTTP/1.1
+content-type: application/json
+
+{ "id": 5,"is_actif": true}

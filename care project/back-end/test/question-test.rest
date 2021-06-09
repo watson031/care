@@ -1,0 +1,148 @@
+// return all extra questions of an establishment
+GET http://localhost:5000/question/basic HTTP/1.1
+
+###
+// question of the day
+GET http://localhost:5000/question/follow-up-day/31 HTTP/1.1
+
+###
+// question of the day
+GET https://care-project.herokuapp.com/question/responses/31/2021-04-19 HTTP/1.1
+
+###
+// distinct responsed date
+GET http://localhost:5000/question/responses/distinct/8 HTTP/1.1
+
+###
+GET http://localhost:5000/question/responses/31 HTTP/1.1
+
+###
+// return all extra questions of an establishment
+// GET http://localhost:5000/question/extra/24 HTTP/1.1
+
+###
+// ADD A BASIC QUESTION
+POST http://localhost:5000/question/basic HTTP/1.1
+content-type: application/json
+
+{
+    "question": {
+        "question": "Have you been relieved by painkillers ?",
+        "is_boolean": true,
+        "is_multiple_choice": false,
+        "is_emoticon": false,
+        "is_range": false,
+        "is_extra": false,
+        "id_establishment": 1
+    },
+    "response": [
+      "YES","NO"
+    ]
+}
+
+###
+// ADD A follow-up questions
+POST http://localhost:5000/question/follow-up HTTP/1.1
+content-type: application/json
+
+{
+    "id_suivi": 5,
+    "extra_questions": [
+        {
+            "question": {
+                "question": " ou Ressentez-vous la douleur?",
+                "is_boolean": false,
+                "is_multiple_choice": true,
+                "is_emoticon": false,
+                "is_range": false,
+                "is_extra": true,
+                "id_establishment": 24
+            },
+            "responses": [
+                "bras",
+                "epaule",
+                "tête"
+            ],
+            "amplitude_jour": 1
+        },
+        {
+            "question": {
+                "question": "Quelle est votre temperature?",
+                "is_boolean": false,
+                "is_multiple_choice": true,
+                "is_emoticon": false,
+                "is_range": true,
+                "is_extra": true,
+                "id_establishment": 24
+            },
+            "responses": [
+                0,
+                2
+            ],
+            "amplitude_jour": 1
+        },
+        {
+            "question": {
+                "question": "Ressentez-vous la douleur?",
+                "is_boolean": false,
+                "is_multiple_choice": true,
+                "is_emoticon": false,
+                "is_range": false,
+                "is_extra": true,
+                "id_establishment": 24
+            },
+            "responses": [
+                "OUi",
+                "Non"
+            ],
+            "amplitude_jour": 1
+        },
+        {
+            "question": {
+                "question": "Evaluation de la douleur?",
+                "is_boolean": false,
+                "is_multiple_choice": false,
+                "is_emoticon": true,
+                "is_range": false,
+                "is_extra": true,
+                "id_establishment": 24
+            },
+            "responses": [
+                2,5,7,10
+            ],
+            "amplitude_jour": 1
+        }
+    ],
+    "id_basic_questions": [
+        {
+            "id_question": 1,
+            "amplitude_jour": 1
+        }
+    ]
+}
+
+###
+// Add A user_response
+POST http://localhost:5000/question/response HTTP/1.1
+content-type: application/json
+
+[
+    {
+        "id_question_follow_up":1,
+        "responses":[{"id":1, "response": "epaule"},{"id":2, "response": "tete"}]
+    },
+    {
+         "id_question_follow_up":3,
+         "rangeValue":37.5
+    },
+    {
+          "id_question_follow_up":2,
+          "id_question_response": 15
+    },
+    
+    {
+        
+        "id_question_follow_up":5,
+        "id_question_response": 156
+    }
+]
